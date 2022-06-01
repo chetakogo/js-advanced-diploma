@@ -5,6 +5,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -12,22 +19,27 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.html$/,
         use: [
           {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
+            loader: 'html-loader',
           },
         ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      filename: './index.html',
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: './style.css',
+      chunkFilename: '[id].css',
+    }),
   ],
 };
