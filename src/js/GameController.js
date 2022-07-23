@@ -32,7 +32,7 @@ export default class GameController {
       this.playerTeam.positioned,
       this.enemyTeam.positioned,
     );
-    //this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
+    this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
     this.status = '';
     this.selectedMember = undefined;
 
@@ -80,7 +80,7 @@ export default class GameController {
     this.gamePlay.drawUi(themes[this.state.level - 1]);
     this.gamePlay.redrawPositions([...this.playerTeam.positioned, ...this.enemyTeam.positioned]);
     this.gamePlay.upScore(`Score: ${this.state.score}`);
-    //this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
+    this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
     this.gamePlay.upLevel(`Level: ${this.state.level}`);
   }
 
@@ -336,7 +336,7 @@ export default class GameController {
     }
     this.gamePlay.upLevel(`Level: ${this.state.level}`);
     this.gamePlay.upScore(`Score: ${this.state.score}`);
-    //this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
+    this.gamePlay.upScoreMax(`Best score: ${this.state.scoreMax}`);
   }
 
   enemyAttack() {
